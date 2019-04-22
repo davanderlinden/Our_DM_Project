@@ -1,8 +1,57 @@
 import networkx as nx
 
+g = nx.read_edgelist("G.txt",create_using=nx.DiGraph(), nodetype=int)
+
 """
 	Functions file for graph theory
 """
+
+def nodes(G):
+	"""
+		Function that returns nodes of given graph
+		Returns graph
+	"""
+	return nx.nodes(G)
+
+def has_node(G, n):
+	"""
+		Function that returns if given node is in the given graph
+		Return boolean
+	"""
+	return G.has_node(n)
+
+def add_node(G, n):
+	return G.add_node(n)
+
+def remove_node(G, n):
+	return G.remove_node(n)
+
+def edges(G):
+	return nx.edges(G)
+
+def has_edge(G, u, v):
+	return G.has_edge(u, v)
+
+def add_edge(G, *e):
+	return G.add_edge(*e)
+
+def remove_edge(G, *e):
+	return G.remove_edge(*e)
+
+def neighbours(G, n):
+	if not G and not n:
+		raise Exception("Please provide graph value and node value")
+	return [n for n in G.neighbors(n)]
+
+def to_undirected(G):
+	if nx.is_directed(G):
+		return G.to_undirected()
+	return G
+
+def to_directed(G):
+	if nx.is_undirected(G):
+		return G.to_directed()
+	return G
 
 def is_matching(G, Matching):
 	"""
@@ -84,3 +133,4 @@ def clique_numbers(G):
 			data.append(i)
 		next(cn)
 	return data
+
