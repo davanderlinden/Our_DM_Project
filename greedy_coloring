@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+
+import networkx as nx
+from independence import independent_set
+from functions.global_properties import V
+from functions.global_properties import max_degree
+
+G = nx.read_edgelist("graph_library/G2.txt")
+
+def greedy_coloring(G):
+    v = list(V(G))
+    a = {}
+    colored = []
+    i = 0
+    
+    for X in v:
+        if X not in colored:
+            to_color = independent_set(G,X)
+            for x in to_color:
+                if x not in colored:
+                    a[x]=i
+                    to_list = [x]
+                    colored+=to_list
+            i+=1                
+    return a
+
+
+
+    
