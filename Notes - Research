@@ -1,0 +1,56 @@
+NOTES ON THEOREMS TO GET AN IDEA ON HOW TO PROCEED WITH CODING ALGORITHM
+
+********************************************************************************************************************
+How can we tell if the data set we are provided is graphical? HAVEL-HAKIMI ALGORITHM
+********************************************************************************************************************
+
+Havel-Hakimi Algorithm
+Obtain vertices degree sequence 
+Arrange in decreasing order 
+First number in sequence is k 
+Remove k and then subtract 1 from the remaining terms in sequence.
+Repeat until zeros are obtained.
+If we get (-1,0) we stop. Data set is not graphical.
+
+Example:
+        
+        (5,3,3,3,2,2,1,1)
+
+Remove 5 and then subtract 1 from the next five terms to get (2,2,2,1,1,1,1), 
+Remove 2 and then subtract 1 from the next two terms to get (1,1,1,1,1,1), 
+Remove 1 and then subtract 1 from the next term to get (0,1,1,1,1); 
+sort to get (1,1,1,1,0). 
+Remove 1 and then subtract 1 from the next term to get (0,1,1,0); 
+sort to get (1,1,0,0). 
+Remove 1 and then subtract 1 from the next term to get (0,0,0).
+
+Once all zeros we can state the data set consisting of 6 vertices connected by 3 disjointed edges is graphical.
+
+
+********************************************************************************************************************
+How can we find the minimum number of colors to properly color a graph? GREEDY COLORING ALGORITHM
+********************************************************************************************************************
+
+Chromatic Number - Is the number of a graph which is the minimum number of colors in a proper coloring.
+
+Greedy Coloring Algorithm
+Procedure:
+Color one vertex with color/or assign number 1.
+Move to next uncolored vertex and color/number it the next lowest number that has not been used on any adjacent vertices.
+Repeat until all vertices have been colored/numbered.
+
+The Chromatic number is the minimum. But if we randomly start coloring/numbering vertices we may obtain a "proper" coloring
+where no two adjacent vertices are of the same color, but we'll exceed the Chromatic Number. 
+There is, however, a maximum number of different colors/numbers we can expect. 
+
+The maximum number is calculated by looking at the degree sequence.
+We add 1 to the largest degree. So with degree sequence (5,3,3,3,2,2,1,1), we can conclude that the Chromatic
+Number of the graph is at most 6. 
+
+
+********************************************************************************************************************
+
+
+
+
+
