@@ -1,0 +1,39 @@
+import networkx as nx
+from functions.global_properties import V
+from functions.local_properties import neighbors
+
+G = nx.read_weighted_edgelist("graph_library/class_weighted.txt")
+new_G = nx.Graph()
+
+used_nodes = set([])
+start = list(G)[3]
+used_nodes.add(start)
+cost = 0
+def compare_edges(G,used_nodes):
+    min = 9000000000000
+    for x in used_nodes:
+        N = neighbors(G,x)
+        for n in N:
+            if n not in used_nodes:
+                if min > G[x][n]['weight']:
+                    min = G[x][n]['weight']
+                    no1 = str(x)
+                    no2 = str(n)
+    return no1,no2,min
+
+def add_edge(a,used_nodes):
+
+    new_G.add_edge(a[0],a[1],weight=a[2])
+    if a[0] not in used_nodes:
+        used_nodes.add(a[0])
+    if a[1] not in used_nodes:
+        used_nodes.add(a[1])
+    return used_nodes,cost
+
+while V(new_G)!=V(G):    
+    a = compare_edges(G,used_nodes)
+    add_edge(a,used_nodes)
+    cost+=a[2]
+print(cost)
+print(used_nodes)
+nx.draw(new_G) 
