@@ -38,6 +38,7 @@ def add_edge(G, *e):
 def remove_edge(G, *e):
 	return G.remove_edge(*e)
 
+
 def neighbours(G, n):
 	if not G and not n:
 		raise Exception("Please provide graph value and node value")
