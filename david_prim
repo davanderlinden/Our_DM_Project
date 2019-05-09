@@ -36,5 +36,4 @@ while V(new_G)!=V(G):
     cost+=a[2]
 print(cost)
 print(used_nodes)
-nx.draw(new_G) 
-#
+nx.draw(new_G)
